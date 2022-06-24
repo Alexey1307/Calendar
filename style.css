@@ -1,0 +1,32 @@
+table{
+    display: grid;
+    justify-content: center;
+
+}
+
+td{
+    padding: 10px;
+    margin: 2px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+tr {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+}
+
+.prev{
+    margin-right: 40px;
+}
+
+.months{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+}

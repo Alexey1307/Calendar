@@ -1,0 +1,30 @@
+.calendarMain{
+	display: grid;
+	grid-template-columns: repeat(7, 50px);
+	justify-content: center;
+	gap: 2px;
+}
+
+.month{
+	padding-left: 48%;
+}
+
+.items{
+	border: solid black 1px;
+	height: 49px;
+	width: 49px;
+	text-align: center;
+}
+
+.weeks{
+	text-align: center;
+}
+
+.input{
+	width: 50%;
+    border: none;
+	padding-left: 40%;
+	margin-top: 20%;
+	background: green;
+	color: white;
+}
