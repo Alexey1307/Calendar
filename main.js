@@ -1,6 +1,7 @@
 const monthsName = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 
         'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 let months = document.querySelector('.months');
+let years = document.querySelector('.years');
 
 let curentDate = new Date();
 let curentYear = curentDate.getFullYear();
@@ -9,6 +10,12 @@ let curentMonth = curentDate.getMonth();
 function createCalendar(elem, year, month){
   let mon = month - 1;
       let d = new Date(year, mon);
+
+      for(let i =0; i<=curentYear; i++){
+        if(i==curentYear){
+           years.innerHTML = curentYear;
+        }
+      }
 
       for(let i =0; i<=monthsName.length; i++){
         if(i == curentMonth){
@@ -67,9 +74,24 @@ function switchMounth(){
     for(let i =0; i<=monthsName.length; i++){
       if(i == curentMonth){
         let a = i-1;
-        console.log(curentMonth);
-        createCalendar(calendar, curentYear, curentMonth);
-        curentMonth = curentMonth - 1;
+        
+        //Проблемное место - сделай чтоб с текущего месяца а не минус 1???
+        if (curentMonth == curentDate.getMonth()){
+            prev.disabled = true;
+          }
+        else if (curentYear > 2022 && curentMonth == 0) {
+          curentYear -= 1;
+          curentMonth = 13;
+
+          createCalendar(calendar, curentYear, curentMonth);
+          months.innerHTML = monthsName[i];
+          years.innerHTML = curentYear;
+        }
+          else{
+          createCalendar(calendar, curentYear, curentMonth);
+          }
+
+        -- curentMonth;
         console.log(curentMonth);
         months.innerHTML = monthsName[a];
           }  
@@ -77,14 +99,24 @@ function switchMounth(){
   })
 
     next.addEventListener('click', ()=>{
+    curentMonth++;
+      prev.disabled = false;
+
     for(let i =monthsName.length; i>=0; i--){
       if(i == curentMonth){
-        console.log(curentMonth);
         createCalendar(calendar, curentYear, curentMonth);
-        curentMonth = curentMonth + 1;
         console.log(curentMonth);
+        console.log(curentYear);
         months.innerHTML = monthsName[i];
           }  
+        else if(curentMonth >11){
+            curentYear += 1;
+            curentMonth = 0; 
+            
+            createCalendar(calendar, curentYear, curentMonth);
+            months.innerHTML = monthsName[i];
+            years.innerHTML = curentYear;
+          }
       }  
   })
 }
