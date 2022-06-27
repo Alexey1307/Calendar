@@ -70,38 +70,12 @@ function switchMounth(){
   let prev = document.querySelector('.prev');
   let next = document.querySelector('.next');
   
-  // prev.addEventListener('click', ()=>{
-  //   for(let i =0; i<=monthsName.length; i++){
-  //     if(i == curentMonth){
-  //       let a = i-1;
-        
-  //       //Проблемное место - сделай чтоб с текущего месяца а не минус 1???
-        // if (curentMonth == curentDate.getMonth()) {
-        //   prev.disabled = true;
-  //       else if (curentYear > 2022 && curentMonth == 0) {
-  //         curentYear -= 1;
-  //         curentMonth = 13;
-
-  //         createCalendar(calendar, curentYear, curentMonth);
-  //         months.innerHTML = monthsName[i];
-  //         years.innerHTML = curentYear;
-  //       }
-  //         else{
-  //         createCalendar(calendar, curentYear, curentMonth);
-  //         }
-
-  //       -- curentMonth;
-  //       console.log(curentMonth);
-  //       months.innerHTML = monthsName[a];
-  //         }  
-  //     }  
-  // })
 
 prev.addEventListener('click', ()=>{
     if (curentMonth == 0){
       curentYear -= 1;
     } 
-   else if (curentMonth == curentDate.getMonth()) {
+   else if (curentMonth == curentDate.getMonth() && curentYear == curentDate.getFullYear()) {
       prev.disabled = true;
         }
     curentMonth = (12 + curentMonth - 1) % 12;
