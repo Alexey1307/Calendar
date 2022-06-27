@@ -8,7 +8,7 @@ let curentYear = curentDate.getFullYear();
 let curentMonth = curentDate.getMonth();
 
 function createCalendar(elem, year, month){
-  let mon = month - 1;
+  let mon = month;
       let d = new Date(year, mon);
 
       for(let i =0; i<=curentYear; i++){
@@ -70,32 +70,45 @@ function switchMounth(){
   let prev = document.querySelector('.prev');
   let next = document.querySelector('.next');
   
-  prev.addEventListener('click', ()=>{
-    for(let i =0; i<=monthsName.length; i++){
-      if(i == curentMonth){
-        let a = i-1;
+  // prev.addEventListener('click', ()=>{
+  //   for(let i =0; i<=monthsName.length; i++){
+  //     if(i == curentMonth){
+  //       let a = i-1;
         
-        //Проблемное место - сделай чтоб с текущего месяца а не минус 1???
-        if (curentMonth == curentDate.getMonth()){
-            prev.disabled = true;
-          }
-        else if (curentYear > 2022 && curentMonth == 0) {
-          curentYear -= 1;
-          curentMonth = 13;
+  //       //Проблемное место - сделай чтоб с текущего месяца а не минус 1???
+        // if (curentMonth == curentDate.getMonth()) {
+        //   prev.disabled = true;
+  //       else if (curentYear > 2022 && curentMonth == 0) {
+  //         curentYear -= 1;
+  //         curentMonth = 13;
 
-          createCalendar(calendar, curentYear, curentMonth);
-          months.innerHTML = monthsName[i];
-          years.innerHTML = curentYear;
+  //         createCalendar(calendar, curentYear, curentMonth);
+  //         months.innerHTML = monthsName[i];
+  //         years.innerHTML = curentYear;
+  //       }
+  //         else{
+  //         createCalendar(calendar, curentYear, curentMonth);
+  //         }
+
+  //       -- curentMonth;
+  //       console.log(curentMonth);
+  //       months.innerHTML = monthsName[a];
+  //         }  
+  //     }  
+  // })
+
+prev.addEventListener('click', ()=>{
+    if (curentMonth == 0){
+      curentYear -= 1;
+    } 
+   else if (curentMonth == curentDate.getMonth()) {
+      prev.disabled = true;
         }
-          else{
-          createCalendar(calendar, curentYear, curentMonth);
-          }
+    curentMonth = (12 + curentMonth - 1) % 12;
+    createCalendar(calendar, curentYear, curentMonth);
+    months.innerHTML = monthsName[curentMonth];
+    years.innerHTML = curentYear;
 
-        -- curentMonth;
-        console.log(curentMonth);
-        months.innerHTML = monthsName[a];
-          }  
-      }  
   })
 
     next.addEventListener('click', ()=>{
