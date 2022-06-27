@@ -75,7 +75,8 @@ prev.addEventListener('click', ()=>{
     if (curentMonth == 0){
       curentYear -= 1;
     } 
-   else if (curentMonth == curentDate.getMonth() && curentYear == curentDate.getFullYear()) {
+   else if (curentMonth == (curentDate.getMonth()+1) && curentYear == curentDate.getFullYear()) {
+    console.log(curentMonth);
       prev.disabled = true;
         }
     curentMonth = (12 + curentMonth - 1) % 12;
@@ -92,8 +93,6 @@ prev.addEventListener('click', ()=>{
     for(let i =monthsName.length; i>=0; i--){
       if(i == curentMonth){
         createCalendar(calendar, curentYear, curentMonth);
-        console.log(curentMonth);
-        console.log(curentYear);
         months.innerHTML = monthsName[i];
           }  
         else if(curentMonth >11){
