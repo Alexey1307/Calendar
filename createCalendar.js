@@ -24,6 +24,7 @@ function createCalendar(elem, year, month){
     }
 
       let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+      let input = '<input class="input" type="text" value="3">';
 
       // пробелы для первого ряда
       // с понедельника до первого дня месяца
@@ -33,7 +34,7 @@ function createCalendar(elem, year, month){
 
       // <td> ячейки календаря с датами
       while (d.getMonth() == mon) {
-        table += '<td>' + d.getDate() + '</td>';
+        table += '<td>' + d.getDate() + input + '</td>';
 
         if (getDay(d) % 7 == 6) { // вс, последний день - перевод строки
           table += '</tr><tr>';
