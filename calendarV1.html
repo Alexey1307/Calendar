@@ -1,17 +1,25 @@
-	// html:
-	// <table id="table">
-	// 	<thead>
-	// 		<tr>
-	// 			<th>пн</th>
-	// 			<th>вт</th>
-	// 			<th>ср</th>
-	// 			<th>чт</th>
-	// 			<th>пт</th>
-	// 			<th>сб</th>
-	// 			<th>вс</th>
-	// 		</tr>
-	// 	</thead>
-	// </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<table id="table">
+		<thead>
+			<tr>
+				<th>пн</th>
+				<th>вт</th>
+				<th>ср</th>
+				<th>чт</th>
+				<th>пт</th>
+				<th>сб</th>
+				<th>вс</th>
+			</tr>
+		</thead>
+	</table>
+<script>
 
 let firstDayMonth = 0;
 let months = document.querySelector('.months').innerHTML;
@@ -110,3 +118,7 @@ function createTable(el) {
 }
 
 createTable(arrs);
+
+</script>
+</body>
+</html>
